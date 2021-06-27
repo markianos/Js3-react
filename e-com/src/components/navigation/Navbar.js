@@ -3,9 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/"><i className="fas fa-skull-crossbones"></i></Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-danger">
+      <div className="container">
+        <Link className="navbar-brand" to="/"><i className="fas fa-skull-crossbones"> Crosstech</i></Link>
         <button
           className="navbar-toggler"
           type="button"
