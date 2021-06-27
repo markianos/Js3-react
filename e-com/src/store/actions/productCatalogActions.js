@@ -14,3 +14,23 @@ export const setProducts = products => {
         payload: products
     }
 }
+
+// Enskilda produkter
+
+export const getProductById = id => {
+    return async dispatch => {
+        const res = await axios.get(`http://localhost:9999/api/products/${id}`)
+        dispatch(setOneProduct(res.data))
+    }
+}
+
+export const setOneProduct = product => {
+    return {
+        type: actiontypes().product.set,
+        payload: product
+    }
+}
+
+export const clearProduct = () => {
+    return {type: actiontypes().product.clear}
+}

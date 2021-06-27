@@ -17,7 +17,7 @@ const Products = () => {
         <div className="row row-cols-1 row-cols-md-3 g-4">
             {
             productCatalog && productCatalog.map(product => (
-                <ProductCard product={product} key={product.id} />
+                <ProductCard product={product} key={product._id} />
                 ))
             } 
         </div>
