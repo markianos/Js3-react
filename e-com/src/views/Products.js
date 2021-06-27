@@ -1,21 +1,26 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProductCatalog } from '../store/actions/productCatalogActions';
 
 
-const Product = () => {
+const Products = () => {
 
     const dispatch = useDispatch();
+    const productCatalog = useSelector(state => state.productCatalog);
 
     useEffect(() => {
         dispatch(getProductCatalog())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
-            Products 
+            {
+            productCatalog && productCatalog.map(product => (
+                <p>{product.name}</p>
+                ))
+            } 
         </div>
     )
 }
 
-export default Product
+export default Products

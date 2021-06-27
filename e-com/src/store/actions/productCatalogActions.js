@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getProductCatalog = () => {
     return async dispatch => {
-        const res = await axios.get('http://localhost:9999/api(products')
+        const res = await axios.get('http://localhost:9999/api/products')
         dispatch(setProducts(res.data))
     }
 }
