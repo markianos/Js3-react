@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ProductCard from '../components/products/ProductCard';
 import { getProductCatalog } from '../store/actions/productCatalogActions';
 
 
@@ -13,10 +14,10 @@ const Products = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
             {
             productCatalog && productCatalog.map(product => (
-                <p>{product.name}</p>
+                <ProductCard product={product} key={product.id} />
                 ))
             } 
         </div>
