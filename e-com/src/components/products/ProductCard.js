@@ -1,7 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/actions/cartActions';
 
 const ProductCard = ({product, details}) => {
+
+    const dispatch = useDispatch()
+
+
     return (
         <div className="col">
             <div className="card h-100">
@@ -18,7 +24,9 @@ const ProductCard = ({product, details}) => {
                        <p className="text-danger text-right h5">{product.price} SEK</p>
                     </div>
                     <div className="d-flex justify-content-between mt-5">
-                        <button className="btn btn-info">Add to Cart</button>
+                        <button className="btn btn-info" onClick={() => {
+                            dispatch(addToCart(product))
+                        }}>Add to Cart</button>
                     {
                         !details && 
                         <Link className="btn btn-info" to={`/products/${product._id}`}>read more</Link>
