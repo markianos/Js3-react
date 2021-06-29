@@ -8,20 +8,69 @@ const initState = {
 
 
 const cartReducer = (state = initState, action) => {
+    let itemIndex
     switch(action.type) {
         case actiontypes().cart.add:
-            let itemIndex = state.shoppingCart.findIndex(product => product._id === action.payload._id)
-            itemIndex < 0
-            ? state.shoppingCart = [...state.shoppingCart, {...action.payload, quantity: 1}] //om den inte finns lägger vi till en
-            : state.shoppingCart[itemIndex].quantity += 1 // om den redan finns plussar vi på aktuella värdet med en
+        itemIndex = state.shoppingCart.findIndex(product => product._id === action.payload._id)
+        itemIndex < 0
+        ? state.shoppingCart = [...state.shoppingCart, {...action.payload, quantity: 1}] //om den inte finns lägger vi till en
+        : state.shoppingCart[itemIndex].quantity += 1 // om den redan finns plussar vi på aktuella värdet med en
+        
+        state.totalCartAmount = getTotalAmount(state.shoppingCart)
+        state.totalCartQuantity = getTotalQuantity(state.shoppingCart)
+        
+
+        return state
+        
+        case actiontypes().cart.sub:
+            action.payload.quantity === 1
+            ? state.shoppingCart = state.shoppingCart.filter(product => product._id !== action.payload._id)
+            : action.payload.quantity -= 1
+      
+            // itemIndex = state.shoppingCart.findIndex(product => product._id === action.payload)
+      
+            // state.shoppingCart[itemIndex].quantity === 1
+            // ? state.shoppingCart = state.shoppingCart.filter(product => product._id !== action.payload)
+            // : state.shoppingCart[itemIndex].quantity -= 1
+      
+            state.totalCartAmount = getTotalAmount(state.shoppingCart)
+            state.totalCartQuantity = getTotalQuantity(state.shoppingCart)
 
             return state
+      
+      
+      
+          case actiontypes().cart.delete:
+            state.shoppingCart = state.shoppingCart.filter(product => product._id !== action.payload)
+            state.totalCartAmount = getTotalAmount(state.shoppingCart)
+            state.totalCartQuantity = getTotalQuantity(state.shoppingCart)
+
+            return state
+
 
         default:
-            return state
+        return state
     }
 }
 
-export default cartReducer; {
+const getTotalAmount = cart => {
+    let total = 0;
+    
+    cart.forEach(product => {
+        total += product.price * product.quantity  
+    }) 
 
+    return total;
+} 
+
+const getTotalQuantity = cart => {
+    let total = 0;
+    cart.forEach(product => {
+      total += product.quantity
+    })
+    return total;
+  }
+
+export default cartReducer; {
+    
 }
