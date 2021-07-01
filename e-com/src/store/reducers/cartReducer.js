@@ -45,7 +45,7 @@ const cartReducer = (state = initState, action) => {
             state.totalCartAmount = getTotalAmount(state.shoppingCart)
             state.totalCartQuantity = getTotalQuantity(state.shoppingCart)
 
-            return state
+            return state;
 
 
         default:
@@ -71,6 +71,4 @@ const getTotalQuantity = cart => {
     return total;
   }
 
-export default cartReducer; {
-    
-}
+export default cartReducer; 

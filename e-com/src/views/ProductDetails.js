@@ -21,7 +21,8 @@ const ProductDetails = () => {
 
     return (
         <div>
-            { product && <ProductCard product={product} details={true} /> } //lektion 8 del1 2:27
+            { product && <ProductCard product={product} details={true} /> } 
+            {/* lektion 8 del1 2:27 */}
         </div>
     )
 }

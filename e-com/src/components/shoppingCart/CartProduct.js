@@ -14,7 +14,7 @@ const CartProduct = ({product}) => {
 
   const sub = e => {
     e.stopPropagation()
-    dispatch(removeFromCart(product))
+    dispatch(removeFromCart(product ))
   }
 
   const del = e => {
