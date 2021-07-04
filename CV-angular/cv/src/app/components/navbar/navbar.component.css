@@ -1,0 +1,14 @@
+nav {
+    background: lightgray;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    list-style: none;
+}
+
+li {
+    width: 5rem;
+}
+
