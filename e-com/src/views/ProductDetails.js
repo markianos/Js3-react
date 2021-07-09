@@ -20,7 +20,7 @@ const ProductDetails = () => {
     const product = useSelector(state => state.product.product)
 
     return (
-        <div>
+        <div className="product-detail-image">
             { product && <ProductCard product={product} details={true} /> } 
             {/* lektion 8 del1 2:27 */}
         </div>

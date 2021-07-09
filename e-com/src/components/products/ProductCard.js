@@ -12,7 +12,7 @@ const ProductCard = ({product, details}) => {
         <div className="col">
             <div className="card h-100">
                 {details && <h1 className="text-center">{product.name}</h1>}
-                <img src={product.image} alt="..." className="card-img-top h-100 p-5" />
+                <img src={product.image} alt="..." className="card-img-top h-75 p-5" />
                 <div className="card-body">
                     {!details && <h5 className="card-title">{product.name}</h5>}
                     <div className="card-text">
@@ -21,21 +21,21 @@ const ProductCard = ({product, details}) => {
                         ? <p>{product.desc}</p>
                         : <p>{product.short}</p> 
                        }
-                       <p className="text-danger text-right h5">{product.price} SEK</p>
+                       <p className="text-danger h5 mt-3">{product.price} SEK</p>
                     </div>
-                    <div className="d-flex justify-content-between mt-5">
-                        <button className="btn btn-info" onClick={() => {
+                    <div className="m-auto text-center mt-5">
+                        <button className="btn btn-danger me-3 my-2 w-75" onClick={() => {
                             dispatch(addToCart(product))
                         }}>Add to Cart</button>
                     {
                         !details && 
-                        <Link className="btn btn-info" to={`/products/${product._id}`}>read more</Link>
+                        <Link className="btn btn-info me-3 w-75" to={`/products/${product._id}`}>read more</Link>
                     }
                     </div>
                     {
                         details && 
                         <div>
-                            <Link className="btn btn-dark mt-5" to="/products">Go back</Link>
+                            <Link className="product-detail-image btn btn-outline mt-5 " to="/products"> <i className="fa fa-arrow-circle-left me-3"></i> Go back</Link>
                         </div>
                     }
                 </div>

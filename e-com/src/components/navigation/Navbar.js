@@ -2,16 +2,17 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 import { useSelector } from 'react-redux';
+import logo from '../../img/nav_logo.png';
 
 
 const Navbar = () => {
   const totalQuantity = useSelector(state => state.cartReducer.totalCartQuantity)
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-danger">
+    <nav className="navbar navbar-expand-lg navbar-light bg-info">
       <div className="container">
-        <Link className="navbar-brand" to="/"><i className="fas fa-skull-crossbones"> Crosstech</i></Link>
-        <button
+        <Link className="navbar-brand ls-wider" to="/"><img className="me-3" src={logo} alt=""/><span className=" font-weight-bold">AmazingTech</span></Link>
+          <button
           className="navbar-toggler"
           type="button"
           data-mdb-toggle="collapse"
